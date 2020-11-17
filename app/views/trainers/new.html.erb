@@ -1,0 +1,9 @@
+<h1> Signup Page </h1>
+
+<%= simple_form_for @trainer, :url => url_for(:action => 'create') do |f| %>
+    <%= f.input :name %>
+    <%= f.input :email %>   
+    <%= f.input :password %>
+    <%= f.input :specialty %>
+    <%= f.button :submit %>
+<% end %>
