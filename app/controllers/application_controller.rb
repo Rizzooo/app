@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     before_action :require_login, except: [:home]
-    # helper_method :logged_in?, :current_user
+    helper_method :logged_in?, :current_trainer
     
     # GET '/' - Application Homepage
     def home
@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
 
     def sign_in(user)
         session[:user] = user.id
+    end
+
+    def sign_out(user)
+        session[:user].destroy
+        redirect_to '/home'
     end
 
     def current_trainer

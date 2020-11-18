@@ -9,6 +9,7 @@ class ClientsController < ApplicationController
 
     # GET '/clients' - Clients Index, All Clients
     def index
+        @clients = Client.all
     end
 
     #GET '/clients/:id' - Clients Show Page

@@ -3,8 +3,13 @@ Rails.application.routes.draw do
 
   get '/login' => "sessions#new"
   get '/signup' => "trainers#new"
+  get '/account' => "trainers#account"
 
   resources :clients do
+    resources :training_sessions, only: [:new, :index]
+  end
+
+  resources :trainers do 
     resources :training_sessions, only: [:new, :index]
   end
 

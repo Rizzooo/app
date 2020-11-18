@@ -21,5 +21,6 @@ class SessionsController < ApplicationController
 
     # DELETE '/sessions/:id' - Logout
     def destroy
+        sign_out(current_trainer)
     end
 end
