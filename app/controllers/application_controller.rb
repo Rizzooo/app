@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
     
     # GET '/' - Application Homepage
     def home
+        if !logged_in? 
+            nil 
+        else  
+            @trainer = Trainer.find_by_id(session[:user])
+            @training_sessions = TrainingSession.all.where(:trainer_id => current_trainer)
+        end
     end
 
     private 

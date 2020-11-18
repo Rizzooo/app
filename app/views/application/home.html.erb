@@ -1,9 +1,24 @@
 <head>
-   <div class="split-left">
-      <h2> No Account? Create One <%=link_to 'HERE!', '/signup' %></h2><br>
-   </div>
+   <% if !logged_in? %>
+      <div class="split-left">
+         <h2> No Account? Create One <%=link_to 'HERE!', '/signup' %></h2><br>
+      </div>
 
-   <div class="split-right">
-      <h2> Welcome Back! Login <%=link_to 'HERE!', '/login' %></h2><br>
-   </div>
+      <div class="split-right">
+         <h2> Welcome Back! Login <%=link_to 'HERE!', '/login' %></h2><br>
+      </div>
+
+   <% else %>
+      <div class="user-main-menu">
+         <h2> Welcome Back, <%=@trainer.name%>! </h2>
+
+         <h3> Today's Training Sessions: </h3>
+            <% @training_sessions.each do |t| %>
+               <ol>
+                  <li><%=t.client_id%>, <%=t.start_time%>, <%=t.end_time%>, <%=t.notes%> </li>
+               </ol>
+            <% end %>
+      </div>
+
+   <% end %>
 </head>
