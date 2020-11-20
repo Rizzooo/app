@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
     private 
 
     def sign_in(user)
+        reset_session
         session[:user] = user.id
     end
 

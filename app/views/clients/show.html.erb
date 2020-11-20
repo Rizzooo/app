@@ -1,1 +1,12 @@
-<h2> Client Show Page </h2>
+<h3><%=@client.name%> Home Page </h2>
+
+<h4><%= @client.name%></h4><br>
+<h4><%= @client.email%></h4><br>
+<h4><%= @client.height%></h4><br>
+<h4><%= @client.weight%></h4><br>
+<h4><%= @client.goals%></h4><br>
+
+<p><%= link_to 'Create Training Session w/ Client', new_training_session_path(@client)%>
+<p><%= link_to 'Edit Client', edit_client_path(@client)%><br>
+
+<%= button_to "Delete", @client, :method => :delete %>

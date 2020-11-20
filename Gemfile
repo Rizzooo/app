@@ -26,6 +26,8 @@ gem 'simple_form', '~> 5.0', '>= 5.0.3'
 
 gem 'better_errors', '~> 2.1', '>= 2.1.1'
 
+gem 'activesupport', '~> 6.0', '>= 6.0.3.4'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

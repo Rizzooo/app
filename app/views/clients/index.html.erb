@@ -1,1 +1,12 @@
-<h2> Client Index </h2>
+<head>
+    <h2> Client Index </h2>
+</head>
+
+<% @clients.each do |client| %>
+    <p><%= client.name%>, <%=client.email%>, <%=client.height%>, <%=client.weight%>, <%= lient.goals%></p>
+<% end %>
+
+<footer>
+    <p><%= link_to "Create New Client", new_client_path %>
+</footer>
+

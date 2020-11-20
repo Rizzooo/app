@@ -10,10 +10,11 @@ class TrainersController < ApplicationController
         trainer = Trainer.create(trainer_params)
         # byebug
 
-        if trainer.valid?
+        if trainer && trainer.valid?
             flash[:notice] = "Account successfully created!"
             sign_in(trainer)
-            redirect_to trainer_path(trainer.id)
+            # byebug
+            redirect_to trainer_path(current_trainer)
         else  
             flash[:notice] = "Account creation failed. Please, try again."
             redirect_to new_trainer_path
@@ -34,6 +35,7 @@ class TrainersController < ApplicationController
     # GET '/trainers/:id/edit' - Edit Trainer Form
     def edit
         @trainer = Trainer.find_by_id(session[:user])
+        byebug
     end
 
     # PATCH 'trainers/:id' - Update Trainer, Save, & Redirect
@@ -61,10 +63,11 @@ class TrainersController < ApplicationController
 
     # DELETE 'trainers/:id' - Delete Trainer (Account!), & Redirect
     def destroy
-        trainer = trainer = Trainer.find_by_id(session[:user])
+        trainer = Trainer.find_by_id(session[:user])
 
-        trainer.destroy 
-        redirect_to '/home'
+        trainer.destroy
+        # byebug
+        redirect_to '/login'
     end
 
     private

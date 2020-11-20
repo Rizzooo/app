@@ -1,1 +1,14 @@
-<h2> Training Sessions Index </h2>
+<head>
+    <h2> Training Session Index </h2>
+</head>
+
+<% @training_sessions.each do |sess| %>
+    <h3>Trainer: <%=current_trainer.name%></h3>
+    <p><%= sess.client.name%></p>
+    <p><%= sess.start_time%> - <%= sess.end_time%></p>
+    <p><%= sess.notes%></p>
+<% end %>
+
+<footer>
+    <p><%= link_to "Create New Training Session", new_training_session_path(current_trainer) %>
+</footer>

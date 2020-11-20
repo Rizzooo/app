@@ -24,17 +24,18 @@ class ClientsController < ApplicationController
 
     #GET '/clients/:id' - Clients Show Page
     def show
-        @client = Client.find_by_id(params[:client][:id])
+        # byebug
+        @client = Client.find_by_id(params[:id])
     end
 
     # GET '/clients/:id/edit' - Edit Client Form
     def edit
-        @client = Client.find_by_id(params[:client][:id])
+        @client = Client.find_by_id(params[:id])
     end
 
     # PATCH 'clients/:id' - Update Client, Save, & Redirect
     def update
-        client = Client.find_by_id(params[:client][:id])
+        client = Client.find_by_id(params[:id])
 
         if client
             client.update(client_params)
@@ -54,7 +55,7 @@ class ClientsController < ApplicationController
 
     # DELETE 'clients/:id' - Delete Client, & Redirect
     def destroy
-        client = Client.find_by_id(params[:client][:id])
+        client = Client.find_by_id(params[:id])
         client.destroy 
         redirect_to '/'
     end

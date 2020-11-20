@@ -1,1 +1,10 @@
 <h2> New Client Form </h2>
+
+<%= simple_form_for @client, :url => url_for(:action => 'create') do |f| %>
+    <%= f.input :name %>
+    <%= f.input :email %>   
+    <%= f.input :height %>
+    <%= f.input :weight %>
+    <%= f.input :goals %>
+    <%= f.button :submit %>
+<% end %>
