@@ -8,4 +8,8 @@ class Trainer < ApplicationRecord
     validates :password, length: { minimum: 6 }, presence: true
 
     has_secure_password
+
+    # Upcoming Training Sessions 
+
+    # Training Sessions Left This Month
 end

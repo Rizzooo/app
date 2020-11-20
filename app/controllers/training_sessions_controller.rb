@@ -1,6 +1,8 @@
 class TrainingSessionsController < ApplicationController
     # GET '/training_sessions/new' - New Client Form
     # POST '/training_sessions' - Create New Client & Redirect 
+    
+    # Try Trainer or current_trainer.build()
     def new
         @training_session = TrainingSession.new
         # byebug

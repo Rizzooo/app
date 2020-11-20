@@ -5,6 +5,12 @@ class TrainingSession < ApplicationRecord
     belongs_to :trainer
 
     after_initialize :set_current_time, :set_default_end_time, :set_trainer
+    
+    # Pretty time (Start/end time)
+    def pretty_time(time)
+    end
+
+    private # Move helpers to /helpers/trainers_helper.rb
 
     def set_current_time
         current_time = Time.zone.now.to_datetime
@@ -18,6 +24,6 @@ class TrainingSession < ApplicationRecord
     end
 
     def set_trainer
-        self.trainer_id = :current_trainer
+        self.trainer_id = current_trainer
     end
 end

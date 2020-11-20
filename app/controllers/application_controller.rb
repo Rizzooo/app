@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
         end
     end
 
-    private 
+    private # Move helpers to /helpers/application_helper.rb
 
     def sign_in(user)
         reset_session
