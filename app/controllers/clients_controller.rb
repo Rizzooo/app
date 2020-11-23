@@ -1,4 +1,5 @@
 class ClientsController < ApplicationController
+    include ApplicationHelper
     # GET '/clients/new' - New Client Form
     # POST '/clients' - Create New Client & Redirect 
     def new
@@ -9,7 +10,6 @@ class ClientsController < ApplicationController
         client = Client.create(client_params)
 
         if client.valid?
-            flash[:notice] = "Client successfully created!"
             redirect_to client_path(client.id)
         else  
             flash[:notice] = "Client creation failed. Please, try again."

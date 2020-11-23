@@ -1,5 +1,8 @@
 class TrainersController < ApplicationController
+    include ApplicationHelper
+    # skip_before_action :verify_authenticity_token
     skip_before_action :require_login, only: [:new, :create]
+    
     # GET '/signup' (trainers#new) - New Trainer Form
     # POST '/trainers' - Create New Client & Redirect
     def new
@@ -7,14 +10,14 @@ class TrainersController < ApplicationController
     end
 
     def create
-        trainer = Trainer.create(trainer_params)
+        trainer = Trainer.create!(trainer_params)
         # byebug
 
         if trainer && trainer.valid?
             flash[:notice] = "Account successfully created!"
             sign_in(trainer)
             # byebug
-            redirect_to trainer_path(current_trainer)
+            redirect_to trainer_path(trainer)
         else  
             flash[:notice] = "Account creation failed. Please, try again."
             redirect_to new_trainer_path
@@ -23,8 +26,9 @@ class TrainersController < ApplicationController
 
     #GET '/trainers/:id' - Trainers Show Page
     def show
-        @trainer = Trainer.find_by_id(session[:user])
-        @training_sessions = TrainingSession.find_by(:trainer_id => current_trainer)
+        @trainer = current_trainer
+        @training_sessions = TrainingSession.all.where(trainer_id: session[:user_id])
+        byebug
     end
 
     # GET '/account' - Trainer Account Page

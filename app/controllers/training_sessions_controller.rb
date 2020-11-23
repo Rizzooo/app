@@ -1,7 +1,8 @@
 class TrainingSessionsController < ApplicationController
+    include ApplicationHelper
     # GET '/training_sessions/new' - New Client Form
     # POST '/training_sessions' - Create New Client & Redirect 
-    
+
     # Try Trainer or current_trainer.build()
     def new
         @training_session = TrainingSession.new
@@ -16,6 +17,7 @@ class TrainingSessionsController < ApplicationController
         if training_session.valid?
             flash[:notice] = "Training Session successfully created!"
             sign_in(training_session)
+            # byebug
             redirect_to training_session_path(training_session.id)
         else  
             flash[:notice] = "Training Session creation failed. Please, try again."
@@ -25,7 +27,7 @@ class TrainingSessionsController < ApplicationController
 
     # GET '/training_sessions' - Training Sessions Index
     def index
-        @training_sessions = TrainingSession.all.where(:trainer_id => current_trainer.id)
+        @training_sessions = TrainingSession.upcoming_sessions
     end
 
     # GET '/training_sessions/:id' - Training Sessions Show Page

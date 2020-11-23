@@ -1,12 +1,22 @@
-<h3><%=@client.name%> Home Page </h2>
+<head>
+    <h3><%=@client.name%> Home Page </h2>
+</head>
 
-<h4><%= @client.name%></h4><br>
-<h4><%= @client.email%></h4><br>
-<h4><%= @client.height%></h4><br>
-<h4><%= @client.weight%></h4><br>
-<h4><%= @client.goals%></h4><br>
+<body>
+    <ul>
+        <li><h4><%= @client.name%></h4><br></li>
+        <li><h4><%= @client.email%></h4><br></li>
+        <li><h4><%= @client.height%></h4><br></li>
+        <li><h4><%= @client.weight%></h4><br></li>
+        <li><h4><%= @client.goals%></h4><br></li>
+    </ul>
 
-<p><%= link_to 'Create Training Session w/ Client', new_training_session_path(@client)%>
-<p><%= link_to 'Edit Client', edit_client_path(@client)%><br>
+    <div>
+        <p><%= link_to 'Create Training Session w/ Client', new_training_session_path(@client)%>
+        <p><%= link_to 'Edit Client', edit_client_path(@client)%><br>
+    </div>
+</body>
 
-<%= button_to "Delete", @client, :method => :delete %>
+<footer>
+    <%= button_to "Delete", @client, :method => :delete %>
+</footer>

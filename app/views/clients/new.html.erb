@@ -1,3 +1,4 @@
+<p>** <%=flash[:notice]%> **</p>
 <h2> New Client Form </h2>
 
 <%= simple_form_for @client, :url => url_for(:action => 'create') do |f| %>

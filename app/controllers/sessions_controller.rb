@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+    include ApplicationHelper
+
     before_action :require_login, only: [:destroy]
     # GET '/login' - Login Form
     def new
