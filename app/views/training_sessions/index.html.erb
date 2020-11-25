@@ -3,6 +3,9 @@
 </head>
 
 <% @training_sessions.each do |sess| %>
+
+    <%# Need to add another trainer (if there is one) %>
+
     <h3>Trainer: <%=current_trainer.name%></h3>
     <p><%= sess.client.name%></p>
     <p><%= sess.start_time%> - <%= sess.end_time%></p>

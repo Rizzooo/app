@@ -10,6 +10,7 @@ class Trainer < ApplicationRecord
 
     has_secure_password
 
+    TRAINERS = Trainer.all
     # Upcoming Training Sessions
     def self.upcoming_sessions
         TrainingSession.all.where(trainer_id: current_trainer.id)

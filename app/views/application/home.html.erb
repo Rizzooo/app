@@ -20,6 +20,8 @@
                   <li><%=t.client_id%>, <%=t.start_time%>, <%=t.end_time%>, <%=t.notes%> </li>
                </ol>
             <% end %>
+
+         <h4><%= button_to "Sign Out", session_path(@trainer), :method => :delete %></h4><br>
       </div>
 
    <% end %>

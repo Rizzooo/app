@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   get '/login' => "sessions#new"
   get '/signup' => "trainers#new"
-  get '/account' => "trainers#account"
 
   resources :clients do
     resources :training_sessions, only: [:new, :index]
@@ -17,6 +16,6 @@ Rails.application.routes.draw do
 
   resources :training_sessions
 
-  resources :sessions, only: [:create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

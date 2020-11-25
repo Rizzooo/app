@@ -1,1 +1,14 @@
-<h1>Welcome Back, <%=@trainer.name%></h1>
+<head>
+    <h1><%=@trainer.name%></h1>
+</head>
+
+<body>
+    
+</body>
+
+<footer>
+    <%= button_to "Sign Out", session_path(@trainer), :method => :delete %><br>
+
+    <p>Delete Account (Can not be undone!) </p>
+    <%= button_to "Delete", @trainer, :method => :delete %>
+</footer>

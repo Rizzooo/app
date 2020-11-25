@@ -4,8 +4,8 @@ module ApplicationHelper
     end
 
     def sign_out(user)
-        session[:user].destroy
-        redirect_to '/home'
+        session[:user_id] = nil
+        redirect_to '/'
     end
 
     def current_trainer

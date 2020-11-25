@@ -1,6 +1,9 @@
 <h2> Training Session Edit Form </h2>
 
 <%= simple_form_for @training_session, :url => url_for(:action => 'update') do |f| %>
+    
+    <%# Need to add another trainer and dropdown-options functionality for both %>
+
     <h3>Trainer: <%=current_trainer.name%></h3>
     <%= f.association :client, collection: Client.all.order(:name), prompt: "Choose Client"%>
     <%= f.input :start_time, input_html: {value: @training_session.start_time} %>

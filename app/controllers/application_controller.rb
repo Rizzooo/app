@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
     include ApplicationHelper
-    before_action :require_login, except: [:home]
     helper_method :logged_in?, :current_trainer
     
     # GET '/' - Application Homepage
@@ -8,8 +7,8 @@ class ApplicationController < ActionController::Base
         if !logged_in? 
             render 'home'
         else  
-            @trainer = Trainer.find_by_id(session[:user])
-            @training_sessions = TrainingSession.upcoming_sessions
+            @trainer = Trainer.find_by_id(session[:user_id])
+            @training_sessions = TrainingSession.all.where(:trainer_id => session[:user_id])
         end
     end
 

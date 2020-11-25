@@ -1,5 +1,7 @@
 <h1> Login Page </h1>
 
+<%# Need to add Omniauth %>
+
 <%= simple_form_for @trainer, :url => url_for(:action => 'create') do |f| %>
   <%= f.input :email %>
   <%= f.input :password %>

@@ -1,14 +1,15 @@
 class TrainersController < ApplicationController
     include ApplicationHelper
-    # skip_before_action :verify_authenticity_token
-    skip_before_action :require_login, only: [:new, :create]
+    # skip_before_action :verify_authenticity_token, :only => [:index, :show, :destroy]
+    before_action :require_login, except: [:new, :create]
     
     # GET '/signup' (trainers#new) - New Trainer Form
-    # POST '/trainers' - Create New Client & Redirect
     def new
         @trainer = Trainer.new
     end
 
+    # POST '/trainers' - Create New Client & Redirect
+    # Need to add Omniauth
     def create
         trainer = Trainer.create!(trainer_params)
         # byebug
@@ -28,23 +29,21 @@ class TrainersController < ApplicationController
     def show
         @trainer = current_trainer
         @training_sessions = TrainingSession.all.where(trainer_id: session[:user_id])
-        byebug
     end
 
     # GET '/account' - Trainer Account Page
     def account
-        @trainer = Trainer.find_by_id(session[:user])
+        @trainer = Trainer.find_by_id(session[:user_id])
     end
 
     # GET '/trainers/:id/edit' - Edit Trainer Form
     def edit
-        @trainer = Trainer.find_by_id(session[:user])
-        byebug
+        @trainer = Trainer.find_by_id(session[:user_id])
     end
 
     # PATCH 'trainers/:id' - Update Trainer, Save, & Redirect
     def update
-        trainer = Trainer.find_by_id(session[:user])
+        trainer = Trainer.find_by_id(session[:user_id])
 
         if trainer
             trainer.update(trainer_params)
@@ -61,14 +60,9 @@ class TrainersController < ApplicationController
         end
     end
 
-    def account 
-        @trainer = Trainer.find_by_id(session[:user])
-    end
-
     # DELETE 'trainers/:id' - Delete Trainer (Account!), & Redirect
     def destroy
-        trainer = Trainer.find_by_id(session[:user])
-
+        trainer = current_trainer
         trainer.destroy
         # byebug
         redirect_to '/login'

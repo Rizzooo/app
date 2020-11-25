@@ -1,5 +1,7 @@
 class ClientsController < ApplicationController
     include ApplicationHelper
+    before_action :require_login
+    
     # GET '/clients/new' - New Client Form
     # POST '/clients' - Create New Client & Redirect 
     def new

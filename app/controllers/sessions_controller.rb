@@ -1,13 +1,14 @@
 class SessionsController < ApplicationController
     include ApplicationHelper
-
     before_action :require_login, only: [:destroy]
+    
     # GET '/login' - Login Form
     def new
         @trainer = Trainer.new
     end
 
     # POST '/sessions' - Login Trainer & Redirect
+    # Need to add Omniauth
     def create
         trainer = Trainer.find_by(:email => params[:trainer][:email])
 

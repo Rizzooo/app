@@ -1,7 +1,11 @@
 <h2> New Training Sessions Form </h2>
 
 <%= simple_form_for @training_session, :url => url_for(:action => 'create') do |f| %>
-    <h3>Trainer: <%=current_trainer.name%></h3>
+    
+    <%# Need to add another trainer and dropdown-options functionality for both %>
+    
+    <%= f.association :trainer, collection: Trainer::TRAINERS %>
+    <%# f.input :trainer, as: :select, collection: trainers, prompt: 'Select Trainer 1', label: false %>
     <%= f.association :client, input_html: {value: @training_session.client_id}, collection: Client.all.order(:name), prompt: "Choose Client"%>  
     <%= f.input :start_time, input_html: {value: @training_session.start_time} %>
     <%= f.input :end_time, input_html: {value: @training_session.end_time} %>

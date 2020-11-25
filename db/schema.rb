@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2020_11_16_231432) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  # May need to add 2nd trainer_id column
   create_table "training_sessions", force: :cascade do |t|
     t.integer "trainer_id"
     t.integer "client_id"
